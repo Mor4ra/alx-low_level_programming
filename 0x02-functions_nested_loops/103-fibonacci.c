@@ -7,19 +7,22 @@
  */
 int main(void)
 {
-	int i = 0;
-	int j = 1, k = 2, sum = k;
+	unsigned long int a = 1, b = 2, c;
 
-	while (k + j < 4000000)
+	printf("%lu", b);
+	while (1)
 	{
-		k += j;
+		c = a + b;
+		if (c >= 4000000)
+			break;
 
-		if (k % 2 == 0)
-			sum += k;
-		j = k - j;
-
-		++i;
+		if ((c % 2) == 0)
+		{
+			printf(", %lu", c);
+		}
+		a = b;
+		b = c;
 	}
-	printf("%ld\n", sum);
+	putchar('\n');
 	return (0);
 }
