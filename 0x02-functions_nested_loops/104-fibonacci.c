@@ -1,24 +1,48 @@
 #include <stdio.h>
 
-void print_fibonacci_sequence(int n) {
-    int a = 1;
-    int b = 2;
+/**
+ * main - prints the first 98 fibonacci values.
+ * Here's the catch tho, we're not gonna use `long long`,
+ * `malloc`, arrays, we're gonna write code that strictly
+ * follows `ISO C90` standards.
+ *
+ * Return: 0
+ */
+int main(void)
+{
+	unsigned long a1 = 1, a2 = 0;
+	unsigned long b1 = 2, b2 = 0;
+	unsigned long c1, c2;
+	unsigned long limit = 1000000000; /* a billion */
+	int count = 2;
 
-    printf("%d, %d", a, b);
+	printf("%lu, %lu", a1, b1);
 
-    for (int i = 3; i <= n; ++i) {
-        int next = a + b;
-        printf(", %d", next);
-        a = b;
-        b = next;
-    }
+	while (count <= 98)
+	{
+		c1 = a1 + b1;
+		c2 = a2 + b2;
 
-    printf("\n");
+		if (c1 >= limit)
+		{
+			c1 -= limit;
+			c2 += 1;
+		}
+
+		if (c2 == 0)
+			printf(", %lu", c1);
+		else
+			printf(", %lu%09lu", c2, c1);
+
+		/* update values */
+		a1 = b1;
+		a2 = b2;
+		b1 = c1;
+		b2 = c2;
+
+		count++;
+	}
+	putchar('\n');
+
+	return (0);
 }
-
-int main() {
-    print_fibonacci_sequence(98);
-
-    return 0;
-}
-
