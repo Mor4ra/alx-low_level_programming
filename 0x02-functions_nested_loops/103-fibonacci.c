@@ -8,8 +8,8 @@
 int main(void)
 {
 	unsigned long int a = 1, b = 2, c;
+	unsigned long int sum = 2;
 
-	printf("%lu", b);
 	while (1)
 	{
 		c = a + b;
@@ -18,11 +18,11 @@ int main(void)
 
 		if ((c % 2) == 0)
 		{
-			printf(", %lu", c);
+			sum += c;
 		}
 		a = b;
 		b = c;
 	}
-	putchar('\n');
+	printf("%lu\n", sum);
 	return (0);
 }
