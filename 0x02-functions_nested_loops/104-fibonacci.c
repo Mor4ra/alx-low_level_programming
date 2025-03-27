@@ -13,12 +13,12 @@ int main(void)
 	unsigned long a1 = 1, a2 = 0;
 	unsigned long b1 = 2, b2 = 0;
 	unsigned long c1, c2;
-	unsigned long limit = 1000000000; /* a billion */
+	unsigned long limit = 1000000000UL; /* a billion */
 	int count = 2;
 
 	printf("%lu, %lu", a1, b1);
 
-	while (count <= 98)
+	while (count < 98)
 	{
 		c1 = a1 + b1;
 		c2 = a2 + b2;
