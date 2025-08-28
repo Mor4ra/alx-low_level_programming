@@ -9,12 +9,12 @@
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-        unsigned int i; /* index to loop thru the memory area */
+	unsigned int i; /* index to loop thru the memory area */
 
-        for (i = 0; i < n; i++)
-        { 
-                s[i] = b;
-        }
+	for (i = 0; i < n; i++)
+	{
+		s[i] = b;
+	}
 
-        return (s);
+	return (s);
 }
