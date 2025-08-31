@@ -7,7 +7,9 @@
  * @accept: the set of characters to search for.
  * Return: a pointer to the first occurrence in s of any
  * character from accept.
+ *
  * [or NULL if no such character exists]
+ *
  */
 char *_strpbrk(char *s, char *accept)
 {
@@ -19,7 +21,9 @@ char *_strpbrk(char *s, char *accept)
 		while (accept[j] != '\0')
 		{
 			if (s[i] == accept[j])
-				return &s[i];
+			{
+				return (&s[i]);
+			}
 			j++;
 		}
 		i++;
