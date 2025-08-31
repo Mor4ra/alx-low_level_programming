@@ -6,7 +6,6 @@
  *
  * @s: the string to scan.
  * @accept: the set of characters to search for.
- *
  * Return: a pointer to first occurrence in 's' of any character
  * from 'accept', or NULL if no such character exists.
  */
@@ -27,6 +26,7 @@ char *_strpbrk(char *s, char *accept)
 		}
 		i++;
 	}
+
 	/* no match found: return NULL */
 	return NULL;
 }
