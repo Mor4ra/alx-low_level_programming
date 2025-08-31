@@ -1,6 +1,7 @@
 #include "main.h"
 
-/* _strspn - calculates the length of the maximum initial
+/**
+ * _strspn - calculates the length of the maximum initial
  * segment of the string 's' that consists entirely of
  * characters contained in the string 'accept'.
  *
