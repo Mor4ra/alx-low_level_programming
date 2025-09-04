@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+/* macros */
 #define TRUE 1
 #define FALSE 0
 
