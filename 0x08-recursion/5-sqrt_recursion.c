@@ -1,36 +1,43 @@
 #include "main.h"
 
 /**
- * _sqrt_recursive - calculates the natural square root of a No. using
- * Newton-Raphson method.
- * @n: the number whose root we're finding
- * @s: current estimate for the root of 'n'
- * Return: the root of 'n' or -1
+ * _bsqrt - a helper function for `_sqrt_recursion()` which uses
+ * binary search to look for the sqrt of `n`.
+ * @low: the lower limit.
+ * @high: the higher limit.
+ * @n: the number to find it`s square root.
+ * Return: the square root of `n` or -1 if `n` doesn`t have a
+ * perfect square root.
  */
-
-int _sqrt_recursive(int n, int s)
+int _bsqrt(int low, int high, int n)
 {
-	int ss;
+	int mid;
 
-	if (n < 0)
+	if (low > high)
 		return (-1);
 	if (n == 0 || n == 1)
 		return (n);
 
-	ss = (s + n / s) / 2;
+	mid = (low + ((high - low) / 2));
+	if ((mid * mid) == n)
+		return (mid);
 
-	if (ss == s)
-		return (s);
-	else
-		return (_sqrt_recursive(n, ss));
+	if ((mid * mid) > n)
+		return (_bsqrt(low, mid - 1, n));
+	return (_bsqrt(mid + 1, high, n));
 }
 
 /**
- * _sqrt_recursion - returns the square root of 'n'
- * @n: the number whose sqr root we're calculating
- * Return: the natural sqr root of 'n' or -1
+ * _sqrt_recursion - recursively calculates the square root of
+ * `n` using a helper function.
+ * @n: the number to find it`s square root.
+ * Return: the square root of n.
  */
 int _sqrt_recursion(int n)
 {
-	return (_sqrt_recursive(n, n));
+	int low = 0, high = ((n / 2) + 1);
+
+	if (n < 0)
+		return (-1);
+	return (_bsqrt(low, high, n));
 }
