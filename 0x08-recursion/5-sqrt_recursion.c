@@ -19,10 +19,11 @@ int _bsqrt(int low, int high, int n)
 		return (n);
 
 	mid = (low + ((high - low) / 2));
-	if ((mid * mid) == n)
+	/* Avoid overflow: compare using division and modulo */
+	if ((mid != 0) && (mid == n / mid) && (n % mid == 0))
 		return (mid);
 
-	if ((mid * mid) > n)
+	if (mid > n / mid)
 		return (_bsqrt(low, mid - 1, n));
 	return (_bsqrt(mid + 1, high, n));
 }
