@@ -1,50 +1,54 @@
 #include "main.h"
 
-/* _strlen_recursion - function declaration */
+/* function prototypes */
+int _palindrome_helper(char *start, char *end);
 int _strlen_recursion(char *s);
 
-/**
- * is_palindrome_recursive - checks if a given substring(specified by
- * 'v' and 'v_x' indices) is a palindrome.
- * @s: pointer to the string we're checking
- * @v: index of the first character in the current substring
- * @v_x: represents the index of the last character in the current
- * substring.
- * Return: 1 if the substring specified by 'v' and 'v_x' is palindrome,
- * otherwise it returns 0.
- */
-int is_palindrome_recursive(char *s, int v, int v_x)
-{
-
-	if (v >= v_x)
-		return (1);
-	if (s[v] != s[v_x])
-		return (0);
-	return (is_palindrome_recursive(s, v + 1, v_x - 1));
-}
 
 /**
- * is_palindrome - checks if a string is palindrome
- * @s: pointer to the string we're checking
- * Return: 1 if the string is palindrome, otherwise it returns 0
+ * is_palindrome - checks if a string is a palindrome.
+ * @s: the string to check.
+ * Return: 1 if true, 0 otherwise.
  */
 int is_palindrome(char *s)
 {
-	int l = _strlen_recursion(s);
+	char *start = s, *end;
+	int len;
 
-	return (is_palindrome_recursive(s, 0, l - 1));
+	len = _strlen_recursion(s);
+	if (len <= 1)
+		return (1);
+
+	end = s + len - 1;
+
+	return (_palindrome_helper(start + 1, end - 1));
 }
 
 /**
- * _strlen_recursion - returns the length of a string
- * @s: pointer to the string whose length we're finding
- * Return: length of the string
+ * _palindrome_helper - recursively checks if a string is a
+ * palindrome.
+ * @start: the 2nd character of the string.
+ * @end: the 2nd last character of the string.
+ * Return: 1 if the string is palindrome, 0 otherwise.
+ */
+int _palindrome_helper(char *start, char *end)
+{
+	if (start >= end)
+		return (1);
+	if (*start != *end)
+		return (0);
+	return (_palindrome_helper(start + 1, end - 1));
+}
+
+/**
+ * _strlen_recursion - recursively calculates the length of a
+ * string.
+ * @s: the string to find it`s length.
+ * Return: the length of `s`.
  */
 int _strlen_recursion(char *s)
 {
-
 	if (*s == '\0')
 		return (0);
-
 	return (1 + _strlen_recursion(s + 1));
 }
